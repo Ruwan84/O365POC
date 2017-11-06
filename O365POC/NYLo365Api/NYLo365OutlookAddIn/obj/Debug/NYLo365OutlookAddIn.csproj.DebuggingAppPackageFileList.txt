@@ -1,0 +1,2 @@
+bin\Debug\OfficeAppManifests\NYLo365OutlookAddInManifest.xml
+C:\NYLo365\NYLo365\NYLo365OutlookAddIn\bin\Debug\NYLo365OutlookAddIn.debugapp

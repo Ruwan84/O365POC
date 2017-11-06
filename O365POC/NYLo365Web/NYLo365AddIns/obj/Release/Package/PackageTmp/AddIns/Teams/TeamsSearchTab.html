@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="X-FRAME-OPTIONS" content="ALLOW-FROM https://teams.microsoft.com/" />
+</head>
+<body>
+    <div>
+        <label>Project ID</label>
+        <input type="text" id="TextBoxProjectID" name="TextBoxProjectID" maxlength="255" placeholder="">
+        <div>
+            <img src="../../Images/search-center.png" />
+        </div>
+    </div>
+
+    <script src="https://statics.teams.microsoft.com/sdk/v1.0/js/MicrosoftTeams.min.js"></script>
+    <script type="text/javascript">
+
+    microsoftTeams.initialize();
+    microsoftTeams.settings.setValidityState(true);
+
+    microsoftTeams.settings.registerOnSaveHandler(function(saveEvent){
+
+        var projectID = document.getElementById("TextBoxProjectID").value;
+        projectID = (projectID === "") ? "*" : projectID;
+        //console.log(projectID);
+
+        microsoftTeams.settings.setSettings({
+            entityId: "searchcenter",
+            contentUrl: "https://nylonline.sharepoint.com/sites/SearchCenter/pages/EverythingResults.aspx?k=" + projectID,
+            suggestedDisplayName: "NYL Search Center",
+            websiteUrl: "https://nylonline.sharepoint.com/sites/SearchCenter/pages/EverythingResults.aspx?k=" + projectID
+        });
+
+        saveEvent.notifySuccess();
+    });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+C:\NYLo365\NYLo365\NYLo365WordAddin\obj\Debug\NYLo365WordAddin.csproj.CoreCompileInputs.cache
+C:\Projects\NYLo365Web\NYLo365WordAddin\bin\Debug\ApplicationInsights.config
+C:\Projects\NYLo365Web\NYLo365WordAddin\obj\Debug\NYLo365WordAddin.csproj.CoreCompileInputs.cache
+C:\Projects\NYLo365Web\NYLo365WordAddin\bin\Debug\Images\Icon16.png

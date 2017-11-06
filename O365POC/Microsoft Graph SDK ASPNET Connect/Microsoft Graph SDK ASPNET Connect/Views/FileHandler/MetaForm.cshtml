@@ -1,0 +1,320 @@
+﻿
+@{
+    ViewBag.Title = "Submit To KM Portal";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('#testButton').on('click', makeServiceRequestKM);
+    });
+    function makeServiceRequestKM() {
+        $("#success-alert").hide();
+        $("#error-alert").hide();
+        document.getElementById("spinner").innerHTML = '<div class="text-align-center"><img src="https://nylo365addinsonazurev2.azurewebsites.net/Images/spinner.gif"></div>';
+        document.getElementById("spinner").scrollIntoView();
+        $("#spinner").show();
+        //window.alert("ok");
+        var attachment;
+        xhr = new XMLHttpRequest();
+
+
+
+        // Update the URL to point to your service location.        
+        xhr.open("POST", "https://nylo365addinsonazurev2.azurewebsites.net/filehandler/SubmitKM", true);
+
+        xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+        xhr.onreadystatechange = requestReadyStateChange;
+
+        // Translate the attachment details into a form easily understood by WCF.
+
+        var attachment = new Object();
+
+        attachment.Functiont = $('#DropDownListFuncations option:selected').text() + '|' + $('#DropDownListFuncations option:selected').val();
+        attachment.DocumentType = $('#DropDownListDocumentTypes option:selected').text() + '|' + $('#DropDownListDocumentTypes option:selected').val();
+        attachment.LineOfBusiness = $('#DropDownListLineofBusiness option:selected').text() + '|' + $('#DropDownListLineofBusiness option:selected').val();
+        attachment.BusinessArea = $('#DropDownListBusinessAreas option:selected').text() + '|' + $('#DropDownListBusinessAreas option:selected').val();
+        attachment.SubBusinessArea = $('#DropDownListSubBusinessAreas option:selected').text() + '|' + $('#DropDownListSubBusinessAreas option:selected').val();
+        attachment.SubFunction = $('#DropDownListSubFunction option:selected').text() + '|' + $('#DropDownListSubFunction option:selected').val();
+        attachment.Tower = $('#DropDownListTower option:selected').text();
+        attachment.SubTower = $('#TextBoxSubTower').val();
+        attachment.Application = $('#DropDownAppName option:selected').text();
+        attachment.Project = $('#DropDownProjectName option:selected').text();
+        attachment.ExpiryDate = $('#fileUploadDatePikerExpDate').val();
+        attachment.Keyword = $('#TextBoxKeyword').val();
+        attachment.Comments = $('#FileUploadVersionComments').val();
+
+
+
+
+        // Send the request. The response is handled in the
+        // requestReadyStateChange function.
+        xhr.send(JSON.stringify(attachment));
+    };
+
+    // Handles the response from the JSON web service.
+    function requestReadyStateChange() {
+
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                var response = xhr.responseText;
+                if (!response.isError) {
+                    // The response indicates that the server recognized
+                    // the client identity and processed the request.
+                    // Show the response.
+                    //var names = "Attachments are uploaded to the KM Portal";
+                    //showMessage(names);
+                    $("#spinner").hide();
+                    //document.getElementById("success-alert").innerHTML = 'Document is uploaded to the KM Portal';
+                    $("#success-alert").show();
+                    $("#error-alert").hide();
+
+                } else {
+                    showMessage(response.message);
+                    $("#success - alert").hide();
+                    $("#error-alert").show();
+                }
+            } else {
+                if (xhr.status == 404) {
+                    //showMessage("The app server could not be found.");
+                    $("#success - alert").hide();
+                    $("#error-alert").show();
+                } else {
+                    showMessage("There was an unexpected error: " + xhr.status + " -- " + xhr.statusText);
+                    $("#success - alert").hide();
+                    $("#error-alert").show();
+                }
+            }
+        }
+    };
+
+
+
+    function showMessage(message) {
+        document.getElementById("message").innerHTML = message;
+    };
+
+    function emptyMessage() {
+        document.getElementById("message").innerHTML = '';
+    };
+
+    function showHideView() {
+        $("#view-all").toggleClass('collapse');
+
+        var viewText = $(".view-all-link").text();
+        $(".view-all-link").text((viewText === 'View More') ? 'Hide' : 'View More');
+    }
+
+</script>
+
+
+
+@*<h2>Submit To KM Portal</h2>*@
+
+
+    <!--<input name="email-address" value=@ViewBag.OneDriveUrl  />
+    <div class="col-sm-12">
+        <div class="form-group">
+            <button class="btn btn-default" id="get-my-email-address">Sumbit To KM</button>
+        </div>
+    </div>-->
+<body class="font-style">
+    <div class="container" style="font-family:sans-serif;">
+        <div class="row margin-right-8">
+            <div class="col-md-2 col-sm-2"></div>
+            <div id="spinner" class="col-md-8 col-sm-8 padding-bottom-15" style="display:none;">
+
+            </div>
+            <div id="success-alert" class="col-md-8 col-sm-8 alert alert-success" style="display:none;">
+                Document is uploaded to the KM Portal
+            </div>
+        </div>
+        <div class="row margin-right-8">
+            <div class="col-md-2 col-sm-2"></div>
+            <div id="error-alert" class="col-md-8 col-sm-8 alert alert-danger" style="display:none;">
+                There was an unexpected error
+            </div>
+        </div>
+        <div class="form-group row margin-right-8">
+            <div class="col-md-2 col-sm-2"></div>
+            <label class="col-sm-2 col-md-2 form-control-label text-align-left padding-left-14">Function<span class="alert-red">*</span></label>
+            <div class="col-sm-6 col-md-6 padding-left-20 padding-right-0">
+                <select id="DropDownListFuncations" name="DropDownListFuncations" class="form-control">
+                    <option value="07ce6631-d7b5-41fa-b134-ea1a1fff88ea">IT Business Management</option>
+                    <option value="f89aa551-2a47-41a7-96c9-c7f73aa8bc36">Technology Planning & Strategy</option>
+                    <option value="09b69017-f2ad-4e4b-8779-5ce9e378aef5">Information Management</option>
+                    <option value="636b76cb-dc4b-4392-a91b-975782a06e33">Architecture</option>
+                    <option value="83b0a5ba-f493-4bd7-bcb4-188e4d043d4b">Security Compliance & Risk Management</option>
+                    <option value="15143b46-efe2-4d33-bf7f-d31464c37154">Quality Management</option>
+                    <option value="0aadd492-6d6c-4d37-8e2f-c340c2eb1a6c">Solution Design Delivery & Support</option>
+                    <option value="eb779959-cb76-4c74-b2b7-9201167d970d">Infrastructure & Operations</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row margin-right-8">
+            <div class="col-md-2 col-sm-2"></div>
+            <label for="inputPassword3" class="col-md-2 col-sm-2 form-control-label text-align-left padding-left-14">Document Type<span class="alert-red">*</span></label>
+            <div class="col-sm-6 col-md-6 padding-left-20 padding-right-0">
+                <select id="DropDownListDocumentTypes" name="DropDownListDocumentTypes" class="form-control">
+                    <option value="918ae691-8d6e-49aa-a8c6-0b8f624752c1">Audit</option>
+                    <option value="1670e387-293f-4299-bf53-543ba826bb5d">Best Practices</option>
+                    <option value="885b0f03-a38c-4dd9-a733-addb35b74ae1">Budget</option>
+                    <option value="fdcf491c-aca0-4e3a-a30f-9cc5af0882cd">Business Case</option>
+                    <option value="00a0e5bc-0cdf-4391-b566-16cb2632cda7">Survey</option>
+                    <option value="df45e063-1374-48ff-85a0-9ae402ae2dba">Decommission</option>
+                    <option value="47f3968b-b69e-407c-997d-35132592267a">Charter</option>
+                    <option value="525c8df6-7034-4723-9750-831c28eb9fc6">Disaster Recovery</option>
+                    <option value="96951ba0-d847-4bbb-af27-92a0e1d5b382">Process</option>
+                    <option value="327b933c-1cc2-40e4-a577-98066b11aba2">Phase Gate Review</option>
+                    <option value="34765b97-2205-4dab-9978-2f7e94b40498">Article</option>
+                </select>
+                <span class="alert-red" id="message3"></span>
+            </div>
+        </div>
+        <div class="container" style="font-family:sans-serif;">
+            <div class="row ">
+                <div class="expand-div col-md-12 col-sm-12">
+                    <span class="float-right expand-span "><a class="view-all-link padding-right-234" style="padding-right:172px;" onclick="showHideView()">View More</a></span>
+                    <div class="row">
+                        <div id="view-all" class="collapse">
+                            <div class="form-group row margin-right-8">
+                                <div class="col-md-2 col-sm-2"></div>
+                                <label class="col-md-2 col-sm-2 form-control-label text-align-left">Line of Business</label>
+                                <div class="col-sm-6 col-md-6">
+                                    <select id="DropDownListLineofBusiness" name="DropDownListLineofBusiness" class="form-control">
+                                        <option value="9fe336b2-69e2-4a91-97bc-4a8bf5a6a01a">Corporate</option>
+                                        <option value="4db020b8-7be9-4700-bd94-30ae05aa50e2">Direct</option>
+                                        <option value="ea8e7683-c99b-4ffd-9da2-1dfa336c4439">Insurance, Agency & Annuities</option>
+                                        <option value="bbf53724-8db5-4747-8497-0e233830b4ba">Investments</option>
+                                        <option value="ba1b614b-d808-483c-90f8-4b505d31eba3">Enterprise Data Management</option>
+                                        <option value="17f761ad-3c8b-4f93-9028-5ad2536161d6">Enterprise Computing Service</option>
+                                        <option value="3775369b-e0e8-406e-826f-7bef70507c98">Technology Strategic Partnerships</option>
+                                        <option value="654bd194-3b91-4e4b-aba0-bbd86a7fcbb3">CRM</option>
+                                        <option value="7378da6c-eca5-44a5-960d-381234ea3f70">Risk & Information Security</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row margin-right-8">
+                                <div class="col-md-2 col-sm-2"></div>
+                                <label for="inputPassword3" class="col-md-2 col-sm-2 form-control-label text-align-left">Business Area</label>
+                                <div class="col-sm-6 col-md-6">
+                                    <select id="DropDownListBusinessAreas" name="DropDownListBusinessAreas" class="form-control">
+                                        <option value="b799424f-27c1-4c3e-9d59-44fa26ffdb52">Annuities</option>
+                                        <option value="90f7b76e-7bd1-4ad4-8182-80c1ba134f76">Corporate Client</option>
+                                        <option value="cbf85f84-7e5a-4dba-9a22-99f41cb6b740">Investors - Real estate investors</option>
+                                        <option value="627e5098-c996-49a6-ba07-6b1a57d9287c">Investors - Fixed Income Investors</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row margin-right-8">
+                                <div class="col-md-2 col-sm-2"></div>
+                                <label for="inputPassword3" class="col-md-2 col-sm-2 form-control-label text-align-left">Sub Business Area</label>
+                                <div class="col-sm-6 col-md-6">
+                                    <select id="DropDownListSubBusinessAreas" name="DropDownListSubBusinessAreas" class="form-control">
+                                        <option value="73a8d6d1-8869-4ef3-8de5-000060e5be65">Contract Management</option>
+                                        <option value="3593f574-dc64-4b40-9dd9-fed72f21ad51">Billing & Collections</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row margin-right-8">
+                                <div class="col-md-2 col-sm-2"></div>
+                                <label for="inputPassword3" class="col-md-2 col-sm-2 form-control-label text-align-left">Sub Function</label>
+                                <div class="col-sm-6 col-md-6">
+                                    <select id="DropDownListSubFunction" name="DropDownListSubFunction" class="form-control">
+                                        <option value="167a0497-de68-4c48-9fd2-91caf4033d0e">Business Analysis</option>
+                                        <option value="984f2af9-0170-4c02-ad57-305193596ea3">End to End Testing</option>
+                                        <option value="6f3b6edd-6468-4434-ae29-4c13cde5efeb">Knowledge Management</option>
+                                        <option value="993f29d8-dfde-4b8a-86c9-5d162188aaaa">Sub Function Sub Function Sub Function IBM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row margin-right-8">
+                                <div class="col-md-2 col-sm-2"></div>
+                                <label class="col-md-2 col-sm-2 form-control-label text-align-left">Tower</label>
+                                <div class="col-sm-6 col-md-6">
+                                    <select id="DropDownListTower" name="DropDownListTower" class="form-control">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row margin-right-8">
+                                <div class="col-md-2 col-sm-2"></div>
+                                <label for="inputPassword3" class="col-md-2 col-sm-2 form-control-label text-align-left">Sub Tower</label>
+                                <div class="col-sm-6 col-md-6">
+                                    <input type="text" class="form-control" id="TextBoxSubTower" name="TextBoxSubTower" maxlength="255" placeholder="">
+                                    <span class="alert-red" id="errorMessageSubTower"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row margin-right-8">
+                                <div class="col-md-2 col-sm-2"></div>
+                                <label for="inputPassword3" class="col-md-2 col-sm-2 form-control-label text-align-left">Application</label>
+                                <div class="col-sm-6 col-md-6">
+                                    <select id="DropDownAppName" name="DropDownAppName" class="form-control">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row margin-right-8">
+                                <div class="col-md-2 col-sm-2"></div>
+                                <label class="col-md-2 col-sm-2 form-control-label text-align-left">Project</label>
+                                <div class="col-sm-6 col-md-6">
+                                    <select id="DropDownProjectName" name="DropDownProjectName" class="form-control">
+                                        <option value=""></option>
+                                        <option value="P1">PRJ00222</option>
+                                        <option value="P2">E-A190</option>
+                                        <option value="P3">E-A167</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row margin-right-8">
+                                <div class="col-md-2 col-sm-2"></div>
+                                <label class="col-md-2 col-sm-2 form-control-label text-align-left">Expiry Date</label>
+                                <div class="col-sm-6 col-md-6 col-xs-9">
+                                    <div class="col-sm-8 padding-left-0 padding-right-0">
+                                        <input class="form-control" type="text" id="fileUploadDatePikerExpDate" title="mm/dd/yyyy" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row margin-right-8">
+                                <div class="col-md-2 col-sm-2"></div>
+                                <label class="col-md-2 col-sm-2 form-control-label text-align-left">Keyword</label>
+                                <div class="col-sm-6 col-md-6">
+                                    <input type="text" class="form-control" id="TextBoxKeyword" name="TextBoxKeyword" maxlength="255" placeholder="">
+                                    <span class="alert-red" id="errorMessageSKeyword"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row margin-right-8">
+                                <div class="col-md-2 col-sm-2"></div>
+                                <label class="col-md-2 col-sm-2 form-control-label text-align-left">Comments</label>
+                                <div class="col-sm-6 col-md-6">
+                                    <textarea class="form-control" id="FileUploadVersionComments"></textarea>
+                                    <span class="alert-red" id="errorMessageVersionComments"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row margin-right-8">
+            <div class="col-md-1 col-sm-1"></div>
+            <div class="col-md-9 col-sm-9  padding-right-0">
+                <button class="ms-Button ms-Button--primary float-right" id="testButton">
+                    <span class="ms-Button-label">Submit To KM</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="response">
+    </div>
+
+    <br />
+    <div id="message">
+    </div>
+
+
+</body>

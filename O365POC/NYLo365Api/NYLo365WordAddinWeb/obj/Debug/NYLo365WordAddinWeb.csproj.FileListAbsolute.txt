@@ -1,0 +1,8 @@
+C:\NYLo365\NYLo365\NYLo365WordAddinWeb\bin\NYLo365WordAddinWeb.dll.config
+C:\NYLo365\NYLo365\NYLo365WordAddinWeb\bin\NYLo365WordAddinWeb.dll
+C:\NYLo365\NYLo365\NYLo365WordAddinWeb\bin\NYLo365WordAddinWeb.pdb
+C:\NYLo365\NYLo365\NYLo365WordAddinWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\NYLo365\NYLo365\NYLo365WordAddinWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\NYLo365\NYLo365\NYLo365WordAddinWeb\obj\Debug\NYLo365WordAddinWeb.csproj.CoreCompileInputs.cache
+C:\NYLo365\NYLo365\NYLo365WordAddinWeb\obj\Debug\NYLo365WordAddinWeb.dll
+C:\NYLo365\NYLo365\NYLo365WordAddinWeb\obj\Debug\NYLo365WordAddinWeb.pdb

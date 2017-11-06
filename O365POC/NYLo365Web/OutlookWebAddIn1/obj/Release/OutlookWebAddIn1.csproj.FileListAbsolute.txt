@@ -1,0 +1,4 @@
+C:\Projects\NYLo365Web\OutlookWebAddIn1\bin\Release\ApplicationInsights.config
+C:\Projects\NYLo365Web\OutlookWebAddIn1\obj\Release\OutlookWebAddIn1.csprojResolveAssemblyReference.cache
+C:\Projects\NYLo365Web\OutlookWebAddIn1\obj\Release\OutlookWebAddIn1.csproj.CoreCompileInputs.cache
+C:\Projects\NYLo365Web\OutlookWebAddIn1\bin\Release\Images\Icon16.png

@@ -1,0 +1,9 @@
+C:\NYLo365\NYLo365\NYLo365OutlookAddInWeb\bin\NYLo365OutlookAddInWeb.dll.config
+C:\NYLo365\NYLo365\NYLo365OutlookAddInWeb\bin\NYLo365OutlookAddInWeb.dll
+C:\NYLo365\NYLo365\NYLo365OutlookAddInWeb\bin\NYLo365OutlookAddInWeb.pdb
+C:\NYLo365\NYLo365\NYLo365OutlookAddInWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\NYLo365\NYLo365\NYLo365OutlookAddInWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\NYLo365\NYLo365\NYLo365OutlookAddInWeb\obj\Debug\NYLo365OutlookAddInWeb.csproj.CoreCompileInputs.cache
+C:\NYLo365\NYLo365\NYLo365OutlookAddInWeb\obj\Debug\NYLo365OutlookAddInWeb.dll
+C:\NYLo365\NYLo365\NYLo365OutlookAddInWeb\obj\Debug\NYLo365OutlookAddInWeb.pdb
+C:\NYLo365\NYLo365\NYLo365OutlookAddInWeb\obj\Debug\NYLo365OutlookAddInWeb.csprojResolveAssemblyReference.cache

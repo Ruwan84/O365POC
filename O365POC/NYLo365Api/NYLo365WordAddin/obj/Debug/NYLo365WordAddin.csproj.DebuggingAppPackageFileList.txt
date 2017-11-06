@@ -1,0 +1,2 @@
+bin\Debug\OfficeAppManifests\NYLo365WordAddinManifest.xml
+C:\NYLo365\NYLo365\NYLo365WordAddin\bin\Debug\NYLo365WordAddin.debugapp

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="NYLo365AddInsONAZUREv2" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Ruwan\\Downloads\\OneDriveWorking\\aspnet-connect-sample-master\\Microsoft\ Graph\ SDK\ ASPNET\ Connect\\Microsoft\ Graph\ SDK\ ASPNET\ Connect\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Ruwan\\Downloads\\OneDriveWorking\\aspnet-connect-sample-master\\Microsoft\ Graph\ SDK\ ASPNET\ Connect\\Microsoft\ Graph\ SDK\ ASPNET\ Connect\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+</parameters>

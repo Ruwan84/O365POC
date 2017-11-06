@@ -1,0 +1,4 @@
+C:\NYLo365\NYLo365\NYLo365OutlookAddIn\obj\Debug\NYLo365OutlookAddIn.csproj.CoreCompileInputs.cache
+C:\Applications\NYLo365\NYLo365\NYLo365Web\NYLo365OutlookAddIn\bin\Debug\ApplicationInsights.config
+C:\Applications\NYLo365\NYLo365\NYLo365Web\NYLo365OutlookAddIn\bin\Debug\NYLo365OutlookAddIn.dll.config
+C:\Applications\NYLo365\NYLo365\NYLo365Web\NYLo365OutlookAddIn\obj\Debug\NYLo365OutlookAddIn.csproj.CoreCompileInputs.cache

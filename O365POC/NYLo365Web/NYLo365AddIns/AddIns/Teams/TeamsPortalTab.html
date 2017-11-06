@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="X-FRAME-OPTIONS" content="ALLOW-FROM https://teams.microsoft.com/" />
+</head>
+<body>
+    <div>
+        <img src="../../Images/portal.png" />
+    </div>
+
+    <script src="https://statics.teams.microsoft.com/sdk/v1.0/js/MicrosoftTeams.min.js"></script>
+    <script type="text/javascript">
+
+    microsoftTeams.initialize();
+    microsoftTeams.settings.setValidityState(true);
+
+    microsoftTeams.settings.registerOnSaveHandler(function(saveEvent){
+
+        microsoftTeams.settings.setSettings({
+            entityId: "kmportal",
+            contentUrl: "https://nylonline.sharepoint.com/sites/ibm",
+            suggestedDisplayName: "NYL KM Portal",
+            websiteUrl: "https://nylonline.sharepoint.com/sites/ibm"
+        });
+
+        saveEvent.notifySuccess();
+    });
+
+    </script>
+</body>
+
+</html>

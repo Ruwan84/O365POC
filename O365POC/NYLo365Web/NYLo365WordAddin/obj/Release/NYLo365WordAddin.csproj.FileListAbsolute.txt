@@ -1,0 +1,2 @@
+C:\Projects\NYLo365Web\NYLo365WordAddin\bin\Release\ApplicationInsights.config
+C:\Projects\NYLo365Web\NYLo365WordAddin\obj\Release\NYLo365WordAddin.csproj.CoreCompileInputs.cache
