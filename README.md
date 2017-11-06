@@ -15,4 +15,4 @@ This repository contains Projects developed for OneDrive, Outlook, Word and Team
 
 # Documentation
 
-Documentation section provides OneDrive, Word, Outlook Add-In development, Teams custom Tab and O365 custom Tile adding procedure.
+Documentation section provides OneDrive, Word, Outlook Add-In development, Teams custom Tab and O365 custom Tile adding procedures.
