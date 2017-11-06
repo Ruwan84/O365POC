@@ -9,3 +9,8 @@ This repository contains Projects developed for OneDrive, Outlook, Word and Team
 
 * NYLo365Web - Web Application for rendering at AddIn pane, capturing Document & Tab metadata.
 
+
+
+# Documentation
+
+Documentation section provides OneDrive, Word, Outlook Add-In development, Teams custom Tab and O365 custom Tile adding procedure.
